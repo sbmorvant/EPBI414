@@ -1,0 +1,70 @@
+Querying database 1:
+
+Querying database 2:
+Results from database 2:
+Results from database 1:
+DB   Event_Date
+DB   Event_Date
+2    2014-09-13
+1    2014-12-10
+
+Querying database 3:
+
+Querying database 4:
+Results from database 3:
+DB   Event_Date
+Results from database 4:
+3    2015-01-04
+
+Querying database 5:
+DB   Event_Date
+Results from database 5:
+4    2014-10-12
+DB   Event_Date
+5    2014-09-11
+
+Querying database 6:
+Querying database 7:
+Results from database 6:
+
+DB   Event_Date
+Results from database 7:
+6    2014-11-13
+Querying database 8:
+DB   Event_Date
+Results from database 8:
+7    2014-12-01
+DB   Event_Date
+8    2014-08-27
+
+Querying database 9:
+Querying database 10:
+Results from database 10:
+Results from database 9:
+DB   Event_Date
+Querying database 11:
+10   2014-12-11
+DB   Event_Date
+9    2014-09-20
+Results from database 11:
+DB   Event_Date
+11   2015-01-25
+
+Querying database 12:
+Results from database 12:
+DB   Event_Date
+Querying database 13:
+12   2014-08-15
+
+Querying database 14:
+Results from database 14:
+Results from database 13:
+DB   Event_Date
+DB   Event_Date
+14   2014-09-19
+13   2014-11-21
+
+Querying database 15:
+Results from database 15:
+DB   Event_Date
+15   2014-08-28

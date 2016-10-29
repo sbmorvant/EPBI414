@@ -1,0 +1,46 @@
+-- +--------------------------------+
+-- |                                |
+-- | EPBI414 HW7 pt1 qry1           |
+-- | sql_e414_f2016_A7_P1.sql       |
+-- |                                |
+-- | Author:    Stephen Morvant II  |
+-- |            swm38@case.edu      |
+-- |                                |
+-- +--------------------------------+
+
+-- This query grabs current employee data for each combination of gender and title.
+-- It finds the total number in each group, average tenure, average age and average salary
+-- Ages/tenure are as of 2016-01-01, not current date
+
+-- ################# NOTES ################# --
+-- Current employees have 9999-01-01 in to_date of salaries
+-- I do not need to know about gaps in tenure
+-- Title, gender, N, Average Tenure, Average age, average salary
+
+-- Establishing which data is being used
+USE epbi414_employee_data;
+
+-- 
+SELECT  title,
+		gender,
+		COUNT (*) AS n FROM
+		(
+		SELECT  e.emp_no,
+				e.gender,
+				t.title
+				FROM employees AS e
+				Inner JOIN
+				(
+				SELECT  emp_no,
+						title
+						FROM titles
+						WHERE to_date = '9999-01-01'
+				)AS t
+				ON e.emp_no = t.emp_no
+		) AS subq
+		GROUP BY title, gender;
+        
+
+		
+		
+		

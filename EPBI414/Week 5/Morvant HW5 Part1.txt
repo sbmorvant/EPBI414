@@ -1,0 +1,56 @@
+####This is for Part1 of EPBI 414 HW5####
+
+##Part 1.1##
+mkdir epbi414_hw3 #Make directory#
+cd epbi414_hw3 #change directory to the one just made#
+
+mkdir hw3_1 #Make subdirectory#
+cd hw3_1 #change to new subdir#
+
+mkdir hw3_1_2 #make new subdir#
+cd hw3_1_2 #change to new subdir#
+
+
+##Part 1.2##
+cd #home directory#
+rm epbi414_hw3 -R #remove previous directory#
+#can check to make sure using "ls"#
+
+mkdir -p epbi414_hw3/hw3_1/hw3_1_2 #make directory and 2 subdirs#
+
+cd epbi414_hw3/hw3_1/hw3_1_2 #change to subdirectory#
+
+
+##Part1.3##
+cat > greetings.txt #create text file#
+#Type in "Hello EPBI 414" and then press Ctrl + D #
+chmod 640 greetings.txt #change priveleges to 6,4,0#
+
+
+##Part 1.4##
+cd #home directory#
+cd .. #go up one level#
+ll swm38 -r | cat > swm38/epbi_hw3/home_dir.lst #long list contents of swm38 and make it into file#
+
+
+##Part 1.5##
+#Being honest, I went ahead and moved myself to the epbi414_hw3 directory so I could check better from here on out#
+mv list_of_jedi.txt.txt epbi414_hw3/list_of_jedi.txt #move to subdir (also removes 2nd .txt)#
+chmod 640 epbi414_hw3/list_of_jedi.txt #change priveleges to 6,4,0#
+
+#This counts the lines of list_of_jedi and prints the result in jedi_line_count#
+wc -l epbi414_hw3/list_of_jedi.txt | cat > epbi414_hw3/jedi_line_count.txt
+
+
+##Part 1.6##
+#grab last 15 jedi and sort alpha into new file#
+tail epbi414_hw3/list_of_jedi.txt -n 15 | sort | cat > epbi414_hw3/sorted_jedi_subset.txt
+
+
+##Part 1.7##
+date >> epbi414_hw3/sorted_jedi_subset.txt #append current date to end of file#
+ 
+
+##Part 1.8##
+zip -r epbi414_hw3.zip epbi414_hw3/ #create a zip file of all of epbi414_hw3
+

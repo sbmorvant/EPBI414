@@ -1,0 +1,37 @@
+#!/bin/bash
+
+###############################################
+#                                             #
+#   MorvantHW6pt1ssh.txt                      #
+#   Authored by: Stephen Morvant II           #
+#   Initial version creation: 2016/10/02      #
+#   Last updated on: 2016/10/07               #
+#                                             #
+###############################################
+
+
+#### This is the shell script of Part 1 of EPBI414 HW6####
+## 
+
+#this tells the script who I am and how to execute the SQL query#
+mysql ­u [e414_swm38] ­p < sql_e414_f2016_A6_P1.sql
+
+#if the filename is not a null string and there are not#
+#too many arguments then  it will proceed#
+#else error message and exit#
+
+if [ ! -z $filename ] && [ -z $2 ]; then
+	echo "Processing $filename"
+else
+	echo "Sorry please enter with the format: \n$0 filename"
+	exit 1
+fi
+
+
+
+
+
+
+
+#find tabs and replace with commas#
+sed 's {\t},{,}

@@ -1,0 +1,73 @@
+-- +--------------------------------+
+-- |                                |
+-- | EPBI414 HW6 pt2                |
+-- | sql_e414_f2016_A6_P2.sql       |
+-- |                                |
+-- | Author:    Stephen Morvant II  |
+-- |            swm38@case.edu      |
+-- |                                |
+-- +--------------------------------+
+
+
+SELECT	o.person_id,
+		o.encounter_id,
+		o.value_numeric,
+		c.short_name
+		FROM obs AS o
+		INNER JOIN
+		(
+		SELECT concept_id,
+				short_name
+				FROM concept
+		) AS c
+		ON o.concept_id = c.concept_id	
+			WHERE c.short_name IN ('SBP', 'DBP', 'HR', 'TEMP (C)', 'WT', 'HT')
+		ORDER BY o.person_id , o.encounter_id , c.short_name;
+				
+				
+				
+-- This is part 2 of part 2 where I want the highest temp				
+				
+SELECT	o.person_id,
+		o.encounter_id,
+		o.value_numeric,
+		o.obs_datetime,
+		c.short_name
+		FROM obs AS o
+		INNER JOIN
+		(
+		SELECT concept_id,
+				short_name
+				FROM concept
+		) AS c
+		ON o.concept_id = c.concept_id	
+			WHERE c.short_name = 'TEMP (C)'
+		ORDER BY o.value_numeric DESC
+		LIMIT 1;
+		
+		
+		
+-- This is part 3 of part 2 where I need to find temperatures over 39.5
+
+SELECT	o.person_id,
+		o.encounter_id,
+		o.value_numeric,
+		o.obs_datetime,
+		c.short_name, 
+		l.name
+		FROM obs AS o
+		INNER JOIN
+		(
+		SELECT concept_id,
+				short_name
+				FROM concept
+		) AS c
+		ON o.concept_id = c.concept_id	
+			WHERE c.short_name = 'TEMP (C)' AND o.value_numeric > 39.5
+		INNER JOIN 
+		(SELECT name
+				FROM location
+		) AS l
+		ON o.location_id = l.location_id
+		ORDER BY o.value_numeric ASC;
+	

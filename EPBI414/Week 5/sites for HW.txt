@@ -1,0 +1,3 @@
+http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_08_02.html
+http://www.grymoire.com/Unix/Sed.html
+http://stackoverflow.com/questions/12234702/unix-shell-to-prompt-user-for-filename

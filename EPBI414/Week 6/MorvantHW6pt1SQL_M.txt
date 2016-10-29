@@ -1,0 +1,39 @@
+-- +--------------------------------+
+-- |                                |
+-- | EPBI414 HW6 pt1 SQL for male   |
+-- | MorvantHW6pt1SQL_F.txt         |
+-- |                                |
+-- | Author:    Stephen Morvant II  |
+-- |            swm38@case.edu      |
+-- |                                |
+-- +--------------------------------+
+
+
+-- Establishing which data is being used
+USE epbi414_employee_data;
+
+-- Selecting employees with all of...
+-- a) hire_date in 1985 or 1986 (BETWEEN 1985-01-01 AND 1986-12-31)
+-- b) gender is male (gender = 'M')
+-- c) currently employed (s.to_date = '9999-01-01')
+-- d) in the top 30 of such employees (ORDER BY s.salary DESC) and LIMIT 30
+-- Need to use INNER JOIN to put all relevant info together based on emp_no
+SELECT  e.emp_no,
+        e.first_name,
+        e.last_name,
+        e.hire_date,
+        e.gender,
+        s.salary
+        FROM employees AS e
+        INNER JOIN
+            (
+            SELECT  emp_no,
+                    salary
+                    FROM salaries
+                    WHERE to_date = '9999-01-01'
+					ORDER BY salary DESC
+            ) AS s
+        ON e.emp_no = s.emp_no
+            WHERE gender = 'M' 
+                    AND hire_date BETWEEN '1985-01-01' AND '1986-12-31'
+		LIMIT 30;

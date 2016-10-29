@@ -1,0 +1,26 @@
+Style guidelines from example
+ 1. Write a preamble explaining the program and documenting it
+ 2. Capitalize the keywords and library; everything else is lower case
+ 3. One command per line
+ 
+ 
+4 purposes of SAS
+ 1. Access	
+   An example is reading a Microsoft Excel file to see what is stored in it
+ 2. Management
+   An example is getting a jumbled spreadsheet from another party (e.g. EMR) and 
+   organizing it by proccedure type and outcome and eliminating useless information 
+   to your study so you can later run analyses on the efficacy of certain procedures.
+ 3. Analyis
+   An example is grabbing that organized data from the management example above and 
+   running T-tests, Anovas, etc.
+ 4. Presentation
+   An example is outputting your data from analyses above into graphs, tables, etc. 
+   so you can pressent them to your collegues or in a paper.
+ 
+ 
+ Webpages that were useful for PART 2
+ 1. http://support.sas.com/kb/31/366.html
+ 2. http://www.neustadtl.umd.edu/handouts/sas_cmd.pdf
+ 3. http://stackoverflow.com/questions/26532606/how-to-convert-sas7bdat-file-to-csv
+ 4. 

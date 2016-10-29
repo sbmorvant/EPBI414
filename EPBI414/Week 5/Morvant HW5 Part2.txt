@@ -1,0 +1,45 @@
+#!/bin/bash
+
+####This is Part 2 of EPBI414 HW5####
+##This script reads a file and outputs an ordered## 
+##list of queries and dates into a .csv file##
+
+#setting filename equal to the first argument (0 is the sript)#
+filename=$1
+
+#if the filename is not a null string and there are not#
+#too many arguments then  it will proceed#
+#else error message and exit#
+
+if [ ! -z $filename ] && [ -z $2 ]; then
+	echo "Processing $filename"
+else
+	echo "Sorry please enter with the format: \n$0 filename"
+	exit 1
+fi
+
+
+#syntax for getting the date#
+startdate=$(date '+%Y%m%d_%H%M%S');
+#print out the date#
+echo "$startdate"
+
+
+####first pipe ####
+###if the line starts with a number then pipe i along ###
+## ('^' is starts with) ([0-9] is numerals) (-n only prints what it is told to print)##
+## without -n, it will print everything##
+## (p explicitly prints what matches the proceeding pattern)##
+
+####second pipe####
+### removes white space and adds only a single comma in its place###
+##( s is substitute: syntax is 's/whatsToBeRplaced/WhatsToReplaceWith/additionalCommands')##
+
+####third pipe####
+###adds "DB,Event_Date" to the first line then adds a newline character###
+
+####fourth pipe ####
+###sorts the clean data by its database number ###
+
+####outputs to a file with the name of the startdate variable####
+sed -n '/^[0-9]/p' $filename | sed 's/\( \)\{1,\}/,/g' | sed '1s/^/DB,Event_Date \n/g' | sort -n > $startdate.csv
