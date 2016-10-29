@@ -1,0 +1,84 @@
+/***************************************
+
+CWRU - EPBI414
+Unit 8 - Introduction to SAS
+Part 2
+
+Stephen Morvant II
+swm38@case.edu
+
+***************************************/
+
+/* This SAS script will examine an example dataset called luggage_data.sas
+and manipulate and organize it into temporary datasets. It should avoid 
+overwriting the original dataset each time and print the temporary datasets
+in an organized fashion. The 3 main functions utiilized are PROC PRINT, 
+PROC SORT, and PROC CONTENTS. OPTIONS for each of these functions is also
+utilized extensively. */
+
+/******************************NOTE**************************************
+I still do not have SAS on my computer at this time. To read the file, I used
+R to convert to a .csv file since I could not read it with a text editor. 
+This allowed me to see the dataset with the correct columns and rows. My 
+program uses the information I gathered this way to use the correct columns,
+etc. 
+**************************************************************************/
+
+
+/* This portion uses the OPTIONS command to change how the data is printed.
+It will not number pages, it will not be centered, and the date will be removed. */
+OPTIONS nocenter nonumber nodate; 
+RUN;
+* This can be broken into 3 commands (nocenter, nonumber, nodate) if wanted;
+
+/* This part declares LUGDATA as a LIBREF and then creates a temp dataset */
+LIBNAME LUGDATA 'c:\Users\Billy\Desktop\EPBI414';
+DATA WORK.luggage_data;
+    SET LUGDATA.luggage_data;
+RUN;
+
+/* This uses PROC PRINT to print the temp dataset and puts a blank line 
+between each observation printed */
+PROC PRINT DATA=WORK.luggage_data BLANKLINE=1;
+RUN;
+
+/* This sorts each piece of luggage alphabetically by manufacturer then 
+name. It overwrites the established temp dataset with the results. The 
+other ways to overwrite (or not) would be to specify OUT=... or OVERWRITE*/
+PROC SORT DATA=WORK.luggage_data;
+    BY manufacturer luggage_name;
+RUN;
+
+/* This sorts the luggage asendingly by ppcuin and creates a new temp dataset
+for output instead of overwriting it. The BY sorts in ascending order by default
+but can be made descending by placing DESCENDING before sorted value;*/
+PROC SORT DATA=WORK.luggage_data OUT=WORK.luggage_data_ppcuin;
+    BY ppcuin;
+RUN;
+
+/* This uses PROC CONTENTS to examine original luggage_data and outputs 
+in the same way the data is stored instead of alphabetically */
+PROC CONTENTS DATA=LUGDATA.luggage_data ORDER=VARNUM;
+RUN;
+
+/* This sorts each piece of luggage alphabetically by manufacturer then 
+price. It then writes a new temp dataset with the results */
+PROC SORT DATA=WORK.luggage_data OUT=WORK.luggage_data_sorted;
+    BY manufacturer DESCENDING price;
+RUN;
+
+/* This prints the new temp dataset and adds an extra line between each 
+observation */
+PROC PRINT DATA=WORK.luggage_data_sorted BLANKLINE=1;
+RUN;
+
+/* This saves the temp file luggage_data_sorted to a permanent file of the same
+name*/
+DATA PERM.luggage_data_sorted;
+    SET WORK.luggage_data_sorted;
+RUN;
+
+
+
+
+
